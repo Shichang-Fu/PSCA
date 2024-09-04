@@ -14,7 +14,7 @@ UAV-OD scenarios
 
    - Download [training set](https://drive.google.com/file/d/1a2oHjcEcwXP8oUF95qiwrqzACb2YlUhn/view), [validation set](https://drive.google.com/file/d/1bxK5zgLn0_L8x276eKkuYA_FzwCIjb59/view) and [test set](https://drive.google.com/file/d/1PFdW_VFSCfZ_sTSZAGjQdifF_Xd5mf0V/view?usp=drive_open), a total of 8599 images
    - All images are integrated into an images folder, and the corresponding annotations are integrated into the annotations folder.
-   - According to the [daylight_train.txt](dataset\visdrone\daylight_train.txt)、[daylight_val.txt](dataset\visdrone\daylight_val.txt) and [night_train.txt](dataset\visdrone\night_train.txt)、[night_val.txt](dataset\visdrone\night_val.txt) we provided, the dataset is divided into a daylight dataset and a night dataset.
+   - According to the [daylight_train.txt](dataset\visdrone\daylight\train.txt)、[daylight_val.txt](dataset\visdrone\daylight\val.txt) and [night_train.txt](dataset\visdrone\night\train.txt)、[night_val.txt](dataset\visdrone\night\val.txt) we provided, the dataset is divided into a daylight dataset and a night dataset.
 
    We provide [annotation and  images catalog ](dataset) to facilitate the organization of the dataset .
 
