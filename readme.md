@@ -1,20 +1,22 @@
 # PSCA
 Implementation of "Prototype-based Joint Category-Scale Adaptation for UAV Domain Adaptive Object Detection"
 # Installation
-Check [install.md](E:\研究生\UAV跨域目标检测\install.md) for installation instructions. The implementation of our anchor-free detector is heavily based on [FCOS](https://github.com/tianzhi0549/FCOS).
+Check [install.md](install.md) for installation instructions. The implementation of our anchor-free detector is heavily based on [FCOS](https://github.com/tianzhi0549/FCOS).
 
 # Dataset
 UAV-OD scenarios
 
 1. [UAV-DT](https://sites.google.com/view/grli-uavdt/%E9%A6%96%E9%A1%B5)
    - Download the [object detection dataset](https://drive.google.com/file/d/1m8KA6oPIRK_Iwt9TYFquC87vBc_8wRVc/view) and its [detection annotations](https://drive.google.com/file/d/19498uJd7T9w4quwnQEy62nibt3uyT9pq/view) and [weather annotations](https://drive.google.com/file/d/1qjipvuk3XE3qU3udluQRRcYuiKzhMXB1/view)
-   - According to the settings of [UAVDT-weather.md](E:\研究生\UAV跨域目标检测\UAVDT_WEATHER.md), the dataset is divided into daylight, night, foggy
+   - According to the settings of [UAVDT-weather.md](dataset\utils\UAVDT_WEATHER.md), the dataset is divided into daylight, night, foggy
 
 2. [VISDRONE](https://github.com/VisDrone/VisDrone-Dataset)
+
    - Download [training set](https://drive.google.com/file/d/1a2oHjcEcwXP8oUF95qiwrqzACb2YlUhn/view), [validation set](https://drive.google.com/file/d/1bxK5zgLn0_L8x276eKkuYA_FzwCIjb59/view) and [test set](https://drive.google.com/file/d/1PFdW_VFSCfZ_sTSZAGjQdifF_Xd5mf0V/view?usp=drive_open), a total of 8599 images
    - All images are integrated into an images folder, and the corresponding annotations are integrated into the annotations folder.
-   - According to the [daylight_train.txt](xxx)、[daylight_val.txt](xxx) and [night_train.txt](xxx)、[night_val.txt](xxx) we provided, the dataset is divided into a daylight dataset and a night dataset.
-   - We provide [annotation information](xxx) for 7 categories corresponding to daylight and night.
+   - According to the [daylight_train.txt](dataset\visdrone\daylight_train.txt)、[daylight_val.txt](dataset\visdrone\daylight_val.txt) and [night_train.txt](dataset\visdrone\night_train.txt)、[night_val.txt](dataset\visdrone\night_val.txt) we provided, the dataset is divided into a daylight dataset and a night dataset.
+
+   We provide [annotation and  images catalog ](dataset) to facilitate the organization of the dataset .
 
 After the preparation, the dataset should be stored as follows:
 
