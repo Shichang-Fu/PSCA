@@ -1,0 +1,12 @@
+torch==1.2.0
+torchvision==0.2.1
+ninja
+yacs
+cython
+matplotlib
+tqdm
+opencv-python
+scikit-image
+scikit-learn
+ipdb
+

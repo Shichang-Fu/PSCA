@@ -1,0 +1,125 @@
+OUTPUT_DIR: './experiments/uavdt/d2n/vgg16_ga_MI_contrast_fusion/'
+MODEL:
+  META_ARCHITECTURE: "GeneralizedRCNN"
+  WEIGHT: 'vgg16-397923af.pth' # Initialed by pretrained weight
+  #
+  RPN_ONLY: True
+  FCOS_ON: True
+  DA_ON: True
+  BACKBONE:
+    CONV_BODY: "VGG-16-FPN-RETINANET"
+  RETINANET:
+    USE_C5: False # FCOS uses P5 instead of C5
+  FCOS:
+    NUM_CLASSES: 4
+    INFERENCE_TH: 0.05    # pre_nms_thresh    (default=0.05)
+    PRE_NMS_TOP_N: 1000   # pre_nms_top_n     (default=1000)
+    NMS_TH: 0.6           # nms_thresh        (default=0.6)
+  ADV:
+    #
+    USE_DIS_GLOBAL: True
+    USE_DIS_CENTER_AWARE: False
+
+    # our-methods
+    USE_MEMORY: True
+    USE_DIS_SCALE_CATEGORY: False
+    USE_MI: True
+    MI_FEATURE_SHAPES_P3: (96,144)
+    MI_FEATURE_SHAPES_P4: (48,72)
+    MI_FEATURE_SHAPES_P5: (24,36)
+    MI_FEATURE_SHAPES_P6: (12,18)
+    MI_FEATURE_SHAPES_P7: (6,9)
+    USE_FUSION: True
+    USE_CONTRAST: True
+
+    #   
+    USE_MEMORY_P7: True
+    USE_MEMORY_P6: True
+    USE_MEMORY_P5: True
+    USE_MEMORY_P4: True
+    USE_MEMORY_P3: True
+
+    # 
+    USE_FUSION_P7: True
+    USE_FUSION_P6: True
+    USE_FUSION_P5: True
+    USE_FUSION_P4: True
+    USE_FUSION_P3: True
+
+    # 
+    SCA_DIS_LAMBDA: 0.1
+    MI_LAMBDA: 0.05
+    CONTRAST_LAMBDA: 0.005
+
+    #
+    GA_DIS_LAMBDA: 0.1
+    GRL_APPLIED_DOMAIN: 'both'
+    #
+    USE_DIS_P7: True
+    USE_DIS_P6: True
+    USE_DIS_P5: True
+    USE_DIS_P4: True
+    USE_DIS_P3: True
+    #
+    DIS_P7_NUM_CONVS: 4
+    DIS_P6_NUM_CONVS: 4
+    DIS_P5_NUM_CONVS: 4
+    DIS_P4_NUM_CONVS: 4
+    DIS_P3_NUM_CONVS: 4
+    #
+    GRL_WEIGHT_P7: 0.01
+    GRL_WEIGHT_P6: 0.01
+    GRL_WEIGHT_P5: 0.01
+    GRL_WEIGHT_P4: 0.01
+    GRL_WEIGHT_P3: 0.01
+TEST:
+  DETECTIONS_PER_IMG: 100 # fpn_post_nms_top_n  (default=100)
+DATASETS:
+  TRAIN_SOURCE: ("UAVDT_daylight_train_cocostyle", ) 
+  TRAIN_TARGET: ("UAVDT_night_train_cocostyle", )
+  TEST: ("UAVDT_night_val_cocostyle", )
+INPUT:
+  MIN_SIZE_RANGE_TRAIN: (640, 800)
+  MAX_SIZE_TRAIN: 1333
+  MIN_SIZE_TEST: 800
+  MAX_SIZE_TEST: 1333
+DATALOADER:
+  SIZE_DIVISIBILITY: 32
+SOLVER:
+  VAL_ITER: 1000
+  ADAPT_VAL_ON: True
+  INITIAL_AP50: 10
+  WEIGHT_DECAY: 0.0001
+  MAX_ITER: 100000
+  IMS_PER_BATCH: 2
+  CHECKPOINT_PERIOD: 100000
+  #
+  BACKBONE:
+    BASE_LR: 0.0025
+    STEPS: (90000, )
+    WARMUP_ITERS: 1000
+    WARMUP_METHOD: "constant"
+  #
+  FCOS:
+    BASE_LR: 0.0025
+    STEPS: (90000, )
+    WARMUP_ITERS: 1000
+    WARMUP_METHOD: "constant"
+  #
+  DIS:
+    BASE_LR: 0.0025
+    STEPS: (90000, )
+    WARMUP_ITERS: 1000
+    WARMUP_METHOD: "constant"
+  #
+  MEMORY:
+    BASE_LR: 0.0025
+    STEPS: (90000, )
+    WARMUP_ITERS: 1000
+    WARMUP_METHOD: "constant"
+  #
+  FUSION:
+    BASE_LR: 0.0025
+    STEPS: (90000, )
+    WARMUP_ITERS: 1000
+    WARMUP_METHOD: "constant"
